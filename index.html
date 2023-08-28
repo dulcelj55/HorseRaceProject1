@@ -9,8 +9,8 @@
 
 </head>
 <body>
+<div id="projectGrid">
     <h1>WELCOME TO THE RACES</h1>
-    
     <section id="topCards">
         <div class = "empty"> </div>
         <div class = "card1"><img class = "backOfCard"src = "images/backOfCard.jpg" alt = "backOfCard"></div>
@@ -20,7 +20,18 @@
         <div class = "card5"><img class = "backOfCard"src = "images/backOfCard.jpg" alt = "backOfCard"></div>
         <div class = "card6"><img class = "backOfCard"src = "images/backOfCard.jpg" alt = "backOfCard"></div>
     </section>
-
+    <section id= sidebar>
+        <div id = "finish"><img class = "finish"src = "images/finish.png" alt = "finish"></div>
+        <div id="odds">
+            <ul>
+                <li>Odds This Rounds</li>
+                <li>Hearts</li>
+                <li>Clubs</li>
+                <li>Diamonds</li>
+                <li>Spades</li>
+            </ul>
+        </div>
+    </section>
     <section id="hearts ">
         
         <div class = "ace"><img class = "AH" src = "images/ace_of_hearts.png" alt = "AH"></div>
@@ -59,22 +70,15 @@
         <div class = "card5"> </div>  
         <div class = "card6"> </div>
     </section>
-    <section id= sidebar>
-
-   <form>
+     <form>
         <label class = "bet">Place Your Bet!</label>
         <input type="text"  class = "bet" placeholder="My Little Pony"></input>
         <input type="text"  class = "bet" placeholder="Black Beauty"></input>
         <input type="text"  class = "bet" placeholder="Mr. Ed"></input>
         <input type="text"  class = "bet" placeholder="Seabiscuit"></input>
     </form>
-</section>
-
-<section>
-    <div  id = winner>You Win!! </div>
-    <div id = loser >You Lost!!</div>
-</section>
-<footer>
+    </section>
+    <footer>
     <img id = "hat_horses" src = "images/hats_horses.webp" alt = "hats_horse">
     <img id = "hat_horses" src = "images/hats_horses.webp" alt = "hats_horse">
     <img id = "hat_horses" src = "images/hats_horses.webp" alt = "hats_horse">
@@ -82,7 +86,11 @@
     <img id = "hat_horses" src = "images/hats_horses.webp" alt = "hats_horse">
     <img id = "hat_horses" src = "images/hats_horses.webp" alt = "hats_horse">
     <img id = "hat_horses" src = "images/hats_horses.webp" alt = "hats_horse">
-</footer>
-   
+    </footer >
+    <section id = "celebration">
+        <div  id = winner>You Win!! </div>
+        <div id = loser >You Lost!!</div>
+        </section> 
+</div> 
 </body>
 </html>
