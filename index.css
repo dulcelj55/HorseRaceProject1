@@ -1,3 +1,48 @@
 body{
+    display: grid;
+    grid-template-columns:100px, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 30px, 100px;
+    grid-template-rows: 100px, 1fr, 1fr, 1fr, 1fr,1fr, 100px, 100px;
     background-color: lightgreen;
 }
+h1{
+    display: grid;
+    text-align: center;
+    
+}
+#topCards{
+
+}
+
+.empty{
+    background: whitesmoke;
+}
+.card1 {
+    background: red;
+   
+}
+.card2 {
+    background: orange;
+    
+}
+.card3 {
+    background: yellow;
+    
+}
+.card4 {
+    background: green;
+  
+}
+.card5 {
+    background: blue;
+    
+}
+.card6 {
+    background: purple;
+    
+}
+
+img{
+    max-width: 100px;
+    max-height: 50%
+}
+
