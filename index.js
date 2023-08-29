@@ -52,80 +52,71 @@ let cards = [
     {card: [12,"s"], img: "images/queen_of_spades.png" },
     {card: [13,"s"], img: "images/king_of_spades.png" },
 ]
-//click to start game- pushes six cards out with a sec delay- pop method
-
-// const cardDeck=document.getElementById("cardDeck");
-const backOfCard=document.getElementById("backOfCard");
-// const card1=document.getElementById("card1");
-// const card2=document.getElementById("card2");
-// const card3=document.getElementById("card3");
-// const card4=document.getElementById("card4");
-// const card5=document.getElementById("card5");
-// const card6=document.getElementById("card6");
+// declare variables
+let isFirstClick = true
+const cardDeck=document.getElementById("cardDeck");
+const backOfCard = document.getElementById("backOfCard");
+const horse = document.getElementByClass("horse");
+let card1 = document.querySelector("#card1 img");
+let card2=document.querySelector("#card2 img");
+let card3=document.querySelector("#card3 img");
+let card4=document.querySelector("#card4 img");
+let card5=document.querySelector("#card5 img");
+let card6=document.querySelector("#card6 img");
 let randomCard
-// console.log("hello")
-
-// backOfCard.addEventListener('click',function(){
-// console.log('it works')
-    let random = Math.floor(Math.random()*cards.length);
-    randomCard = cards[random];
-    cards.splice(randomCard,1);
-    console.log(randomCard)
-// card1.src= randomCard
-// cards.pop(randomCard )
-
-// });
+let sixCards = [card1, card2, card3, card4, card5, card6]
+let leftPostion = 0;
+// function to make horses move
+const moveOnespot= (suit)=>{
+    
+    
+}
 
 
-// chatgpt code
-// const cardDeck = document.getElementById("cardDeck");
 
-// const cardElements = [
-//     document.getElementById("card1"),
-//     document.getElementById("card2"),
-//     document.getElementById("card3"),
-//     document.getElementById("card4"),
-//     document.getElementById("card5"),
-//     document.getElementById("card6")
-// ];
 
-// cardDeck.addEventListener('click', function () {
-//     for (let i = 0; i < cardElements.length; i++) {
-//         setTimeout(() => {
-//             let random = Math.floor(Math.random() * cards.length);
-//             cardElements[i].src = cards[random].img;
-//         }, i * 1000); // Delay each card change by 1 second
-//     }
-// });
+// game start by click
+backOfCard.addEventListener('click',function(){
+    if(isFirstClick ){
+        for (let i = 0; i < sixCards.length; i++) {
+                setTimeout(() => {
+                    let randomIndex = Math.floor(Math.random()*cards.length);
+                    randomCard = cards[randomIndex];
+                    sixCards[i].src = randomCard.img;
+                    cards.splice(randomIndex,1);
+                    }, i * 1000); // Delay each card change by 1 second
+                    console.log(cards);
+                   }
+        isFirstClick = false
+    } else{
+        let randomIndex = Math.floor(Math.random()*cards.length);
+        randomCard = cards[randomIndex];
+        let suit= randomCard.card[1]
+        console.log(randomCard) 
+        cardDeck.src = randomCard.img;
+        if (suit === "h"){
+          moveOneSpot("h")
+        }else if (suit=== "d"){
+            moveOneSpot("d")
+        }else if (suit==="s"){
+            moveOneSpot("s")
+        }else  if (suit==="c"){
+            moveOneSpot("c")
+        }
+        cards.splice(randomIndex,1);
+    } 
+    
+        
+
+ });
+
+
+
 
 // calculate odds
-
-
 //instuctions place your bet
-
 //bet subtracted from bank
-
 //instuctions to click card deck
-
-// // card moves horses pop cards used
-// backOfCard.addEventListener('click',function(){
-//     // console.log('it works')
-//         let random = Math.floor(Math.random()*cards.length);
-//         randomCard = cards[random];
-//         if (randomCard [1] === "h"){
-//             move one spot
-//         }else{
-//             if (randomCard[1]=== "d")
-//         }else{
-//             if (randomCard[1]=== "s")
-//         }else{
-//             if (randomCard[1]=== "c")
-//         }}
-//     cards.pop(randomCard )
-    
-//     });
-    
-
 //finisher starts yo win or lose icon pops up 
 //calculate winnings and to bank
 // restart round
