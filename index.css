@@ -7,35 +7,43 @@
 h1{
     
     text-align: center;
-    grid-column: span 9;
+    grid-column:1/9 ;
+    grid-row: 1/2
     
 }
 #topCards{
     display: grid;
-    grid-column-start: 1;
-    grid-column-end: 8;
+    grid-column: 1/7;
+    grid-row: 2/3;
     justify-content: space-around;
     background-color: aqua;
-    grid-column: 100px,1fr,1fr,1fr,1fr,1fr, 1fr;
     display: flex; 
-    flex-direction: row;
-    
-    
+    flex-direction: row;   
+}
+.backOfCard{
+    width: 200px;
+    height: 400px;
+}
+#finish{
+    display: grid;
+    grid-row:3/7 ;
+    grid-column: 7/8;
+    background-image: url ("images.finish.png");
+
 }
 #sidebar{
     display: grid;
-    grid-row-start: 8;
-    grid-row-end: 9;
+    grid-row:2/7 ;
+    grid-column: 8/9;
     background-color: sandybrown;
    
     
 }
 #hearts{
     display: grid;
-    grid-column-start: 1;
-    grid-column-end: 8;
+    grid-column: 1/7;
+    grid-column: 3/4;
     background-color: aquamarine;
-    grid-column: 100px,1fr,1fr,1fr,1fr,1fr, 1fr;
   
 
     
@@ -44,66 +52,40 @@ h1{
 #clubs{
     display: grid;
     background-color: bisque;
-    grid-column: 100px,1fr,1fr,1fr,1fr,1fr, 1fr;
-    grid-column-start: 1;
-    grid-column-end: 8;
+    grid-column: 1/7;
+    grid-row: 4/5;
 }
 
 #diamonds{
     display: grid;
     background-color: darkmagenta;
-    grid-column: 100px,1fr,1fr,1fr,1fr,1fr, 1fr;
-    grid-column-start: 1;
-    grid-column-end: 8;
+    grid-column: 1/7;
+    grid-row: 5/6;
 }
 
 #spades{
 
     display: grid;
     background-color: crimson;
-    grid-row: 100px,1fr,1fr,1fr,1fr,1fr, 1fr;
-    grid-column-start: 1;
-    grid-column-end: 8;
+    grid-row: 6/7;
+    grid-column: 1/7;
 }
     
-
-
-/* .empty{
-    background: whitesmoke;
+form{
+    display:flex;
+    flex-direction: column;
 }
-.card1 {
-    background: red;
-   
-   
-}
-.card2 {
-    background: orange;
-    
-}
-.card3 {
-    background: yellow;
-    
-}
-.card4 {
-    background: green;
-  
-}
-.card5 {
-    background: blue;
-    
-}
-.card6 {
-    background: purple;
-    
-} */
-
 img{
     max-width: 100px;
     max-height: 50%
 }
 footer{
     display: inline-flex;
+    align-items: stretch;
     background-color: cornflowerblue;
+    grid-row: 7/8;
+    grid-column: 1/9;
+    width: 100%;
     
 }
 
