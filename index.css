@@ -1,4 +1,4 @@
-body{
+#projectGrid{
     display: grid;
     grid-template-columns:100px, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 30px, 100px;
     grid-template-rows: 100px, 1fr, 1fr, 1fr, 1fr,1fr, 100px, 100px;
@@ -7,52 +7,73 @@ body{
 h1{
     
     text-align: center;
-    background-color: antiquewhite;
+    grid-column: span 9;
     
 }
 #topCards{
-   display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 8;
+    justify-content: space-around;
     background-color: aqua;
-    grid-column: span 9;
+    grid-column: 100px,1fr,1fr,1fr,1fr,1fr, 1fr;
+    display: flex; 
+    flex-direction: row;
+    
     
 }
 #sidebar{
-    
-    flex-direction: column;
+    display: grid;
+    grid-row-start: 8;
+    grid-row-end: 9;
     background-color: sandybrown;
-    grid-row: span 7;
+   
+    
 }
 #hearts{
-    
-    flex-direction: row;
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 8;
     background-color: aquamarine;
-    grid-column: span 9;
+    grid-column: 100px,1fr,1fr,1fr,1fr,1fr, 1fr;
+  
+
+    
+    
 }
 #clubs{
-    
-    flex-direction: row;
+    display: grid;
     background-color: bisque;
-    grid-column: span 9;
+    grid-column: 100px,1fr,1fr,1fr,1fr,1fr, 1fr;
+    grid-column-start: 1;
+    grid-column-end: 8;
 }
-#diamond{
-    
-    flex-direction: row;
+
+#diamonds{
+    display: grid;
     background-color: darkmagenta;
-    grid-column: span 9;
+    grid-column: 100px,1fr,1fr,1fr,1fr,1fr, 1fr;
+    grid-column-start: 1;
+    grid-column-end: 8;
 }
+
 #spades{
 
-    flex-direction: row;
+    display: grid;
     background-color: crimson;
-    grid-column: span 9;
+    grid-row: 100px,1fr,1fr,1fr,1fr,1fr, 1fr;
+    grid-column-start: 1;
+    grid-column-end: 8;
 }
+    
 
-.empty{
+
+/* .empty{
     background: whitesmoke;
 }
 .card1 {
     background: red;
+   
    
 }
 .card2 {
@@ -74,7 +95,7 @@ h1{
 .card6 {
     background: purple;
     
-}
+} */
 
 img{
     max-width: 100px;
@@ -89,4 +110,4 @@ footer{
 #hat_horses{
     height: 100px
     
-}
+} 
