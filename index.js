@@ -56,21 +56,83 @@ let cards = [
 let isFirstClick = true
 const cardDeck=document.getElementById("cardDeck");
 const backOfCard = document.getElementById("backOfCard");
-const horse = document.getElementByClass("horse");
+const h= document.getElementById("h")
+const d= document.getElementById("d")
+const s= document.getElementById("s")
+const c= document.getElementById("c")
 let card1 = document.querySelector("#card1 img");
 let card2=document.querySelector("#card2 img");
 let card3=document.querySelector("#card3 img");
 let card4=document.querySelector("#card4 img");
 let card5=document.querySelector("#card5 img");
 let card6=document.querySelector("#card6 img");
+let arrayOfHearts = document.querySelectorAll("#hearts img");
+let arrayOfClubs = document.querySelectorAll("#clubs img");
+let arrayOfDiamonds = document.querySelectorAll("#diamonds img");
+let arrayOfSpades = document.querySelectorAll("#spades img");
+let currentHeart = 0;
+let currentClub = 0;
+let currentDiamond = 0;
+let currentSpades = 0;
+
+
+console.log(arrayOfHearts);
 let randomCard
 let sixCards = [card1, card2, card3, card4, card5, card6]
-let leftPostion = 0;
+
 // function to make horses move
-const moveOnespot= (suit)=>{
-    
+const moveOneSpot= (suit)=>{
+    if (suit == "h"){
+        currentHeart += 1
+        for(let i=0; i< arrayOfHearts.length; i++){
+            if (currentHeart == i){
+                arrayOfHearts[i].hidden=false
+            }else{
+                arrayOfHearts[i].hidden=true
+            }
+        }
+        
+    }
+
+if (suit == "c"){
+    currentClub += 1
+    for(let i=0; i< arrayOfClubs.length; i++){
+        if (currentClub == i){
+            arrayOfClubs[i].hidden=false
+        }else{
+            arrayOfClubs[i].hidden=true
+        }
+    }
     
 }
+
+if (suit == "d"){
+    currentDiamond += 1
+    for(let i=0; i< arrayOfDiamonds.length; i++){
+        if (currentDiamond == i){
+            arrayOfDiamonds[i].hidden=false
+        }else{
+            arrayOfDiamonds[i].hidden=true
+        }
+    }
+    
+}
+
+if (suit == "s"){
+    currentSpades += 1
+    for(let i=0; i< arrayOfSpades.length; i++){
+        if (currentSpades == i){
+            arrayOfSpades[i].hidden=false
+        }else{
+            arrayOfSpades[i].hidden=true
+        }
+    }
+    
+}};
+
+
+
+
 
 
 
