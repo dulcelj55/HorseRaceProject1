@@ -30,6 +30,7 @@ h1{
     grid-row:3/7 ;
     grid-column: 7/8;
     background-image: url ("images.finish.png");
+    object-fit: cover;
 
 }
 #sidebar{
@@ -39,6 +40,9 @@ h1{
     background-color: sandybrown;
    
     
+}
+#bank{
+    width: 200px; 
 }
 #hearts{
     display: grid;
