@@ -1,7 +1,4 @@
-body{
-    vh:100%
-    vw:100%
-}
+
 #projectGrid{
     display: grid;
     grid-template-columns:100px, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 30px, 100px;
