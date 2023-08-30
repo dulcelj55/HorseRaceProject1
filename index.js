@@ -74,6 +74,11 @@ let currentHeart = 0;
 let currentClub = 0;
 let currentDiamond = 0;
 let currentSpades = 0;
+let cutCards = [];
+let totalH = 0;
+let totalC = 0;
+let totalD = 0;
+let totalS = 0;
 
 
 console.log(arrayOfHearts);
@@ -145,10 +150,13 @@ backOfCard.addEventListener('click',function(){
                     let randomIndex = Math.floor(Math.random()*cards.length);
                     randomCard = cards[randomIndex];
                     sixCards[i].src = randomCard.img;
+                    cutCards.push(randomCard.card)
                     cards.splice(randomIndex,1);
-                    }, i * 1000); // Delay each card change by 1 second
-                    console.log(cards);
+                    
+                    }, i * 100); 
+                   
                    }
+                   console.log(cutCards)
         isFirstClick = false
     } else{
         let randomIndex = Math.floor(Math.random()*cards.length);
@@ -176,6 +184,34 @@ backOfCard.addEventListener('click',function(){
 
 
 // calculate odds
+
+
+// counts suit
+// figure odds
+// for ()
+console.log(cutCards)
+if( cutCards[1] =='h'){
+    totalH = totalH + 1
+    odd1= parseInt(toatlH/6)
+    odd2= parseInt(odd1-1)
+    
+}
+console.log (totalH)
+if( cutCards[1] =='s'){
+    totalS = totalS +1
+}
+console.log (totalS)
+if( cutCards[1] =='d'){
+    totalD += 1
+}
+console.log (totalD)
+if( cutCards[1] =='c'){
+    totalC += 1
+}
+console.log (totalC)
+
+
+
 //instuctions place your bet
 //bet subtracted from bank
 //instuctions to click card deck
