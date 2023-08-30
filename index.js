@@ -1,5 +1,4 @@
 let cards = [
-    {card: [1,"h"], img:"images/ace_of_hearts.png" },
     {card: [2,"h"], img: "images/2_of_hearts.png" },
     {card: [3,"h"], img: "images/3_of_hearts.png" },
     {card: [4,"h"], img: "images/4_of_hearts.png" },
@@ -12,7 +11,6 @@ let cards = [
     {card: [11,"h"], img: "images/jack_of_hearts.png" },
     {card: [12,"h"], img: "images/queen_of_hearts.png" },
     {card: [13,"h"], img: "images/king_of_hearts.png" },
-    {card: [1,"c"], img: "images/ace_of_clubs.png" },
     {card: [2,"c"], img: "images/2_of_clubs.png" },
     {card: [3,"c"], img: "images/3_of_clubs.png" },
     {card: [4,"c"], img: "images/4_of_clubs.png" },
@@ -25,7 +23,6 @@ let cards = [
     {card: [11,"c"], img: "images/jack_of_clubs.png" },
     {card: [12,"c"], img: "images/queen_of_clubs.png" },
     {card: [13,"c"], img: "images/king_of_clubs.png" },
-    {card: [1,"d"], img: "images/ace_of_diamonds.png" },
     {card: [2,"d"], img: "images/2_of_diamonds.png" },
     {card: [3,"d"], img: "images/3_of_diamonds.png" },
     {card: [4,"d"], img: "images/4_of_diamonds.png" },
@@ -38,7 +35,6 @@ let cards = [
     {card: [11,"d"], img: "images/jack_of_diamonds.png" },
     {card: [12,"d"], img: "images/queen_of_diamonds.png" },
     {card: [13,"d"], img: "images/king_of_diamonds.png" },
-    {card: [1,"s"], img: "images/ace_of_spades.png" },
     {card: [2,"s"], img: "images/2_of_spades.png" },
     {card: [3,"s"], img: "images/3_of_spades.png" },
     {card: [4,"s"], img: "images/4_of_spades.png" },
@@ -79,7 +75,10 @@ let totalH = 0;
 let totalC = 0;
 let totalD = 0;
 let totalS = 0;
-
+let heartOdds = document.querySelector("heartOdds")
+let diamondOdds = document.querySelector("diamondOdds")
+let spadeOdds = document.querySelector("spadeOdds")
+let clubOdds = document.querySelector("clubOdds")
 
 console.log(arrayOfHearts);
 let randomCard
@@ -176,7 +175,38 @@ backOfCard.addEventListener('click',function(){
         cards.splice(randomIndex,1);
     } 
     
+    for (let i = 0; i < cutCards.length; i++) {
+        if( cutCards[1] =='h'){
+            totalH = totalH + 1
+            heartsProb= parseInt(totalH/6)
+            heartsOdd= parseInt(heartsProb-1)
+            
+        }
         
+        if( cutCards[1] =='s'){
+            totalS = totalS +1
+            spadeProb= parseInt(totallS/6)
+            spadeOdd= parseInt(spadeProb-1)
+        }
+        
+        if( cutCards[1] =='d'){
+            totalD += 1
+            diamondProb= parseInt(totalD/6)
+            diamondOdd= parseInt(diamondProb-1)
+        }
+        
+        if( cutCards[1] =='c'){
+            totalC += 1
+            clubProb= parseInt(totalC/6)
+            clubOdd= parseInt(clubProb-1)
+        }
+        console.log (totalC)
+        }
+        
+        heartOdds.innertext = "Heart" + heartsProb + " / " + heartOdds + " Odds"
+        clubOdds.innertext = "Club" + clubsProb + " / " + heartOdds + " Odds"
+        heartOdds.innertext = "Heart" + heartsProb + " / " + heartOdds + " Odds"
+        heartOdds.innertext = "Heart" + heartsProb + " / " + heartOdds + " Odds" 
 
  });
 
