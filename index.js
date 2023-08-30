@@ -190,25 +190,7 @@ backOfCard.addEventListener('click',function(){
 // figure odds
 // for ()
 console.log(cutCards)
-if( cutCards[1] =='h'){
-    totalH = totalH + 1
-    odd1= parseInt(toatlH/6)
-    odd2= parseInt(odd1-1)
-    
-}
-console.log (totalH)
-if( cutCards[1] =='s'){
-    totalS = totalS +1
-}
-console.log (totalS)
-if( cutCards[1] =='d'){
-    totalD += 1
-}
-console.log (totalD)
-if( cutCards[1] =='c'){
-    totalC += 1
-}
-console.log (totalC)
+git
 
 
 
