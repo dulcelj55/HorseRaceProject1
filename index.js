@@ -100,13 +100,128 @@ let heartOdds = document.querySelector("#heartOdds")
  let resetPlayer = document.querySelector("#resetPlayer")
  let wager=0
  let betOn;
+ let resetRound = document.querySelector("#resetRound")
 
 
  resetPlayer.addEventListener('click',function(e){
     money.textContent= "$ " + 500;
-}
+    spadebet.disabled = false
+    heartbet.disabled = false
+clubbet.disabled = false
+spadebet.disabled = false 
+diamondbet.value="";
+heartbet.value="";
+clubbet.value="";
+spadebet.value="";
+})
+resetRound.addEventListener('click',function(e){
+    spadebet.disabled = false
+    heartbet.disabled = false
+clubbet.disabled = false
+spadebet.disabled = false 
+diamondbet.value="";
+heartbet.value="";
+clubbet.value="";
+spadebet.value="";
+currentHeart = 0;
+currentClub = 0;
+currentDiamond = 0;
+currentSpades = 0;
+arrayOfClubs[0].hidden=false
+arrayOfClubs[1].hidden=true
+arrayOfClubs[2].hidden=true
+arrayOfClubs[3].hidden=true
+arrayOfClubs[4].hidden=true
+arrayOfClubs[5].hidden=true
+arrayOfClubs[6].hidden=true
+arrayOfDiamonds[0].hidden=false
+arrayOfDiamonds[1].hidden=true
+arrayOfDiamonds[2].hidden=true
+arrayOfDiamonds[3].hidden=true
+arrayOfDiamonds[4].hidden=true
+arrayOfDiamonds[5].hidden=true
+arrayOfDiamonds[6].hidden=true
+arrayOfSpades[0].hidden=false
+arrayOfSpades[1].hidden=true
+arrayOfSpades[2].hidden=true
+arrayOfSpades[3].hidden=true
+arrayOfSpades[4].hidden=true
+arrayOfSpades[5].hidden=true
+arrayOfSpades[6].hidden=true
+arrayOfHearts[0].hidden=false
+arrayOfHearts[1].hidden=true
+arrayOfHearts[2].hidden=true
+arrayOfHearts[3].hidden=true
+arrayOfHearts[4].hidden=true
+arrayOfHearts[5].hidden=true
+arrayOfHearts[6].hidden=true
+sixCards[0].src = "images/backOfCard.jpg";
+sixCards[1].src = "images/backOfCard.jpg";
+sixCards[2].src = "images/backOfCard.jpg";
+sixCards[3].src = "images/backOfCard.jpg";
+sixCards[4].src = "images/backOfCard.jpg";
+sixCards[5].src = "images/backOfCard.jpg";
 
-)
+
+
+let cards = [
+    {card: [2,"h"], img: "images/2_of_hearts.png" },
+    {card: [3,"h"], img: "images/3_of_hearts.png" },
+    {card: [4,"h"], img: "images/4_of_hearts.png" },
+    {card: [5,"h"], img: "images/5_of_hearts.png" },
+    {card: [6,"h"], img: "images/6_of_hearts.png" },
+    {card: [7,"h"], img: "images/7_of_hearts.png" },
+    {card: [8,"h"], img: "images/8_of_hearts.png" },
+    {card: [9,"h"], img: "images/9_of_hearts.png" },
+    {card: [10,"h"], img: "images/10_of_hearts.png" },
+    {card: [11,"h"], img: "images/jack_of_hearts.png" },
+    {card: [12,"h"], img: "images/queen_of_hearts.png" },
+    {card: [13,"h"], img: "images/king_of_hearts.png" },
+    {card: [2,"c"], img: "images/2_of_clubs.png" },
+    {card: [3,"c"], img: "images/3_of_clubs.png" },
+    {card: [4,"c"], img: "images/4_of_clubs.png" },
+    {card: [5,"c"], img: "images/5_of_clubs.png" },
+    {card: [6,"c"], img: "images/6_of_clubs.png" },
+    {card: [7,"c"], img: "images/7_of_clubs.png" },
+    {card: [8,"c"], img: "images/8_of_clubs.png" },
+    {card: [9,"c"], img: "images/9_of_clubs.png" },
+    {card: [10,"c"], img: "images/10_of_clubs.png" },
+    {card: [11,"c"], img: "images/jack_of_clubs.png" },
+    {card: [12,"c"], img: "images/queen_of_clubs.png" },
+    {card: [13,"c"], img: "images/king_of_clubs.png" },
+    {card: [2,"d"], img: "images/2_of_diamonds.png" },
+    {card: [3,"d"], img: "images/3_of_diamonds.png" },
+    {card: [4,"d"], img: "images/4_of_diamonds.png" },
+    {card: [5,"d"], img: "images/5_of_diamonds.png" },
+    {card: [6,"d"], img: "images/6_of_diamonds.png" },
+    {card: [7,"d"], img: "images/7_of_diamonds.png" },
+    {card: [8,"d"], img: "images/8_of_diamonds.png" },
+    {card: [9,"d"], img: "images/9_of_diamonds.png" },
+    {card: [10,"d"], img: "images/10_of_diamonds.png" },
+    {card: [11,"d"], img: "images/jack_of_diamonds.png" },
+    {card: [12,"d"], img: "images/queen_of_diamonds.png" },
+    {card: [13,"d"], img: "images/king_of_diamonds.png" },
+    {card: [2,"s"], img: "images/2_of_spades.png" },
+    {card: [3,"s"], img: "images/3_of_spades.png" },
+    {card: [4,"s"], img: "images/4_of_spades.png" },
+    {card: [5,"s"], img: "images/5_of_spades.png" },
+    {card: [6,"s"], img: "images/6_of_spades.png" },
+    {card: [7,"s"], img: "images/7_of_spades.png" },
+    {card: [8,"s"], img: "images/8_of_spades.png" },
+    {card: [9,"s"], img: "images/9_of_spades.png" },
+    {card: [10,"s"], img: "images/10_of_spades.png" },
+    {card: [11,"s"], img: "images/jack_of_spades.png" },
+    {card: [12,"s"], img: "images/queen_of_spades.png" },
+    {card: [13,"s"], img: "images/king_of_spades.png" },
+    isFirstClick= true 
+
+
+
+
+]
+
+})  
+
 // function to make horses move
 const moveOneSpot= (suit)=>{
     if (suit == "h"){
@@ -180,6 +295,7 @@ backOfCard.addEventListener('click',function(){
         let randomIndex = Math.floor(Math.random()*cards.length);
         randomCard = cards[randomIndex];
         let suit= randomCard.card[1]
+        console.log(randomIndex)
         cardDeck.src = randomCard.img;
 if (suit === "h"){
           moveOneSpot("h")
@@ -239,16 +355,9 @@ if (suit === "h"){
             money.textContent= "$ " + dollars
         }}
         
-            spadebet.disabled = false
-        heartbet.disabled = false
-clubbet.disabled = false
-spadebet.disabled = false 
-diamondbet.value="";
-heartbet.value="";
-clubbet.value="";
-spadebet.value="";
+           
 
-        }
+        
       
       
    
