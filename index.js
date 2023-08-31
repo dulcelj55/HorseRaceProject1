@@ -75,8 +75,6 @@ let totalH = 0;
 let totalC = 0;
 let totalD = 0;
 let totalS = 0;
-
-// placing bets
 let money= document.querySelector("#money")
 let dollars = 500
 let form= document.querySelector("form")
@@ -99,10 +97,16 @@ let heartOdds = document.querySelector("#heartOdds")
  let diamondOdds = document.querySelector("#diamondOdds")
  let spadeOdds = document.querySelector("#spadeOdds")
  let clubOdds = document.querySelector("#clubOdds")
+ let resetPlayer = document.querySelector("#resetPlayer")
  let wager=0
  let betOn;
 
 
+ resetPlayer.addEventListener('click',function(e){
+    money.textContent= "$ " + 500;
+}
+
+)
 // function to make horses move
 const moveOneSpot= (suit)=>{
     if (suit == "h"){
@@ -176,9 +180,8 @@ backOfCard.addEventListener('click',function(){
         let randomIndex = Math.floor(Math.random()*cards.length);
         randomCard = cards[randomIndex];
         let suit= randomCard.card[1]
-        console.log(randomCard) 
         cardDeck.src = randomCard.img;
-        if (suit === "h"){
+if (suit === "h"){
           moveOneSpot("h")
           
         }else if (suit=== "d"){
@@ -191,14 +194,22 @@ backOfCard.addEventListener('click',function(){
             moveOneSpot("c")
            
         }
+        
         cards.splice(randomIndex,1);
+       
+       
     } 
+   
     if (currentDiamond>6){
         alert("Diamonds win!")
         if (betOn=="d"){
             dollars+= wager*2
             money.textContent= "$ " + dollars
-        }
+        } 
+
+        
+        
+        
 
     }
     
@@ -208,25 +219,40 @@ backOfCard.addEventListener('click',function(){
             dollars+= wager*2
             money.textContent= "$ " + dollars
         }
+       
+       
+    }
         
-    }if (currentClub>6){
+    if (currentClub>6){
         alert("clubs win!")
         if (betOn=="c"){
             dollars+= wager*2
             money.textContent= "$ " + dollars
+            }
+            
+            
         }
-    } if (currentHeart>6){
+     if (currentHeart>6){
         alert("hearts wins")
         if (betOn=="h"){
             dollars+= wager*2
             money.textContent= "$ " + dollars
-        }
-    }  
+        }}
+        
+            spadebet.disabled = false
+        heartbet.disabled = false
+clubbet.disabled = false
+spadebet.disabled = false 
+diamondbet.value="";
+heartbet.value="";
+clubbet.value="";
+spadebet.value="";
 
-    // calculate odds
-// counts suit
-// figure odds
-// 
+        }
+      
+      
+   
+
     setTimeout(()=>{
 
     
@@ -264,20 +290,11 @@ backOfCard.addEventListener('click',function(){
         }
         
     }
-       
-
-        
-
-
-// Update the HTML elements with the calculated odds
-// heartOdds.innerHTML = "Heart Odds: " + (heartOdd * 100).toFixed(2) + "%";
 clubOdds.innerHTML = "Club Odds: " + (clubOdd * 100).toFixed(2) + "%";
 spadeOdds.innerHTML = "Spade Odds: " + (spadeOdd * 100).toFixed(2) + "%";
 diamondOdds.innerHTML = "Diamond Odds: " + (diamondOdd * 100).toFixed(2) + "%";
-        heartOdds.innerHTML = ("Heart " + heartsProb + " / " + heartOdd + " Odds")
-        // clubOdds.innerHTML = ("Club " + clubsProb + " / " + clubOdd + " Odds")
-        // diamondOdds.innerHTML = ("Diamond " + diamondProb + " / " + diamondOdd + " Odds")
-        // spadeOdds.innerHTML = ("Spades " + spadeProb + " / " + spadeOdd + " Odds") 
+heartOdds.innerHTML = ("Heart " + heartsProb + " / " + heartOdd + " Odds")
+       
         
    },1500)
 });
@@ -287,12 +304,13 @@ diamondOdds.innerHTML = "Diamond Odds: " + (diamondOdd * 100).toFixed(2) + "%";
  
 
 
-
+//event listeners
  heartbet.addEventListener("keyup", function(e){
     if (e.key==="Enter"){
         console.log(dollars)
         if (heartbet.value> dollars){
-            console.log("sorry, you don't have enough money")
+            alert("sorry, you don't have enough money")
+            heartbet.value=""
         }else{
             wager= heartbet.value
         dollars-=wager
@@ -309,7 +327,8 @@ clubbet.addEventListener("keyup", function(e){
     if (e.key==="Enter"){
         console.log(dollars)
         if (clubbet.value> dollars){
-            console.log("sorry, you don't have enough money")
+            alert("sorry, you don't have enough money")
+            clubbet.value=""
         }else{
             wager= clubbet.value
         dollars-=wager
@@ -326,7 +345,8 @@ spadebet.addEventListener("keyup", function(e){
     if (e.key==="Enter"){
         console.log(dollars)
         if (spadebet.value> dollars){
-            console.log("sorry, you don't have enough money")
+            alert("sorry, you don't have enough money")
+            spadebet.value=""
         }else{
             wager= spadebet.value
         dollars-=wager
@@ -343,7 +363,8 @@ diamondbet.addEventListener("keyup", function(e){
     if (e.key==="Enter"){
         console.log(dollars)
         if (diamondbet.value> dollars){
-            console.log("sorry, you don't have enough money")
+            alert("sorry, you don't have enough money")
+            diamondbet.value=""
         }else{
             wager= diamondbet.value
         dollars-=wager
@@ -356,6 +377,8 @@ diamondbet.addEventListener("keyup", function(e){
        
     }
 })
+
+
 
 
 
