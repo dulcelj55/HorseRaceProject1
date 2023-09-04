@@ -115,6 +115,7 @@ let dcard2= document.querySelector("#dcard2")
 let dcard3= document.querySelector("#dcard3")
 let ccard2= document.querySelector("#ccard2")
 let ccard3= document.querySelector("#ccard3")
+let changes
 
 
 resetPlayer.addEventListener('click',function(e){
