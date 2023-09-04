@@ -1,3 +1,5 @@
+// declare variables
+
 let cardsOriginal = [
     {card: [2,"h"], img: "images/2_of_hearts.png" },
     {card: [3,"h"], img: "images/3_of_hearts.png" },
@@ -49,7 +51,6 @@ let cardsOriginal = [
     {card: [13,"s"], img: "images/king_of_spades.png" },
 ]
 let cards = [...cardsOriginal]
-// declare variables
 let isFirstClick = true
 const cardDeck=document.getElementById("cardDeck");
 const backOfCard = document.getElementById("backOfCard");
@@ -115,9 +116,16 @@ let dcard2= document.querySelector("#dcard2")
 let dcard3= document.querySelector("#dcard3")
 let ccard2= document.querySelector("#ccard2")
 let ccard3= document.querySelector("#ccard3")
-let changes
+let step1= document.querySelector("#step1")
+let step2= document.querySelector("#step2")
+let step3= document.querySelector("#step3")
+let step4= document.querySelector("#step4")
+let chanceD= ""
+let chanceS= ""
+let chanceH= ""
+let chanceC= ""
 
-
+//RESET PLAYER
 resetPlayer.addEventListener('click',function(e){
 money.textContent= "$ " + 500;
 spadebet.disabled = false
@@ -128,7 +136,73 @@ diamondbet.value="";
 heartbet.value="";
 clubbet.value="";
 spadebet.value="";
+spadebet.disabled = false
+heartbet.disabled = false
+clubbet.disabled = false
+diamondbet.disabled = false 
+diamondbet.value="";
+heartbet.value="";
+clubbet.value="";
+spadebet.value="";
+currentHeart = 0;
+currentClub = 0;
+currentDiamond = 0;
+currentSpades = 0;
+arrayOfClubs[0].hidden=false
+arrayOfClubs[1].hidden=true
+arrayOfClubs[2].hidden=true
+arrayOfClubs[3].hidden=true
+arrayOfClubs[4].hidden=true
+arrayOfClubs[5].hidden=true
+arrayOfClubs[6].hidden=true
+arrayOfDiamonds[0].hidden=false
+arrayOfDiamonds[1].hidden=true
+arrayOfDiamonds[2].hidden=true
+arrayOfDiamonds[3].hidden=true
+arrayOfDiamonds[4].hidden=true
+arrayOfDiamonds[5].hidden=true
+arrayOfDiamonds[6].hidden=true
+arrayOfSpades[0].hidden=false
+arrayOfSpades[1].hidden=true
+arrayOfSpades[2].hidden=true
+arrayOfSpades[3].hidden=true
+arrayOfSpades[4].hidden=true
+arrayOfSpades[5].hidden=true
+arrayOfSpades[6].hidden=true
+arrayOfHearts[0].hidden=false
+arrayOfHearts[1].hidden=true
+arrayOfHearts[2].hidden=true
+arrayOfHearts[3].hidden=true
+arrayOfHearts[4].hidden=true
+arrayOfHearts[5].hidden=true
+arrayOfHearts[6].hidden=true
+sixCards[0].src = "images/backOfCard.jpg";
+sixCards[1].src = "images/backOfCard.jpg";
+sixCards[2].src = "images/backOfCard.jpg";
+sixCards[3].src = "images/backOfCard.jpg";
+sixCards[4].src = "images/backOfCard.jpg";
+sixCards[5].src = "images/backOfCard.jpg";
+isFirstClick =true
+cardDeck.src = "images/backOfCard.jpg";
+winner.hidden = true
+backOfCard.hidden= false 
+hearts.textContent.hidden= true
+spades.textContent.hidden= true
+diamonds.textContent.hidden= true
+clubs.textContent.hidden= true
+step1.hidden=false
+step2.hidden=true
+step3.hidden=true
+step4.hidden=true
+clubOdds.innerHTML = " "
+spadeOdds.innerHTML = " "
+diamondOdds.innerHTML = " "
+heartOdds.innerHTML =  " "
+cards = [...cardsOriginal]
 })
+
+
+// RESET ROUND
 resetRound.addEventListener('click',function(e){
 spadebet.disabled = false
 heartbet.disabled = false
@@ -184,8 +258,14 @@ hearts.textContent.hidden= true
 spades.textContent.hidden= true
 diamonds.textContent.hidden= true
 clubs.textContent.hidden= true
-
-
+step1.hidden=false
+step2.hidden=true
+step3.hidden=true
+step4.hidden=true
+clubOdds.innerHTML = " "
+spadeOdds.innerHTML = " "
+diamondOdds.innerHTML = " "
+heartOdds.innerHTML =  " "
 cards = [...cardsOriginal]
 })  
 
@@ -238,29 +318,24 @@ if (suit == "s"){
 
 };
 
-// game start by click
+
+//start of game
 backOfCard.addEventListener('click',function(){
     if(isFirstClick ){
+        step1.hidden=true
+        step2.hidden=false
         for (let i = 0; i < sixCards.length; i++) {
                 setTimeout(() => {
-                 
-                    let randomIndex = Math.floor(Math.random()*cards.length);
+                 let randomIndex = Math.floor(Math.random()*cards.length);
                     randomCard = cards[randomIndex];
                     sixCards[i].src = randomCard.img;
                     cutCards.push(randomCard.card)
-                    
                     cards.splice(randomIndex,1);
-                    
-                }, i * 100); 
-               
-                   
-                  
-        isFirstClick = false
-
-
-
-    
-    }} else {
+                    }, i * 100); 
+                    isFirstClick = false
+}} else {
+        
+       
         let randomIndex = Math.floor(Math.random()*cards.length);
         randomCard = cards[randomIndex];
         let suit= randomCard.card[1]
@@ -288,10 +363,10 @@ if (suit === "h"){
         cards.splice(randomIndex,1);
        
        
-    } 
+    }
 
     //winner action
-    // setTimeout(() => {
+    
     if (currentDiamond>6){
         backOfCard.hidden= true
         if (betOn=="d"){
@@ -301,8 +376,14 @@ if (suit === "h"){
             arrayOfDiamonds[0].hidden=false
         winner.hidden = false
         winner.innerHTML= ("Diamond Wins!")
-        dcard2.innerHTML=  ("Diamond ")
-        dcard3.innerHTML=  (" Wins!")
+        step3.hidden=true
+        step4.hidden= false
+        sixCards[0].src = "images/ace_of_diamonds.png";
+        sixCards[1].src = "images/ace_of_diamonds.png";
+        sixCards[2].src ="images/ace_of_diamonds.png";
+        sixCards[3].src = "images/ace_of_diamonds.png";
+        sixCards[4].src = "images/ace_of_diamonds.png";
+        sixCards[5].src = "images/ace_of_diamonds.png";
     }
     
     if (currentSpades>6){
@@ -313,10 +394,16 @@ if (suit === "h"){
             }  
         winner.hidden = false
         winner.innerHTML= ("Spades Wins!")
-        scard2.innerHTML=  ("Spades ")
-        scard3.innerHTML=  (" Wins!")
+        step3.hidden=true
+        step4.hidden= false
+        sixCards[0].src = "images/ace_of_spades.png";
+sixCards[1].src = "images/ace_of_spades.png";
+sixCards[2].src ="images/ace_of_spades.png";
+sixCards[3].src = "images/ace_of_spades.png";
+sixCards[4].src = "images/ace_of_spades.png";
+sixCards[5].src = "images/ace_of_spades.png";
         }
-         if (currentClub>6){
+    if (currentClub>6){
         backOfCard.hidden= true
         if (betOn=="c"){
             dollars+= wager*2
@@ -324,88 +411,121 @@ if (suit === "h"){
            } 
             winner.hidden = false
             winner.innerHTML= ("Clubs Wins!") 
-            ccard2.innerHTML=  ("Clubs ")
-            ccard3.innerHTML=  (" Wins!")
-            
+            step3.hidden=true
+            step4.hidden= false
+            sixCards[0].src = "images/ace_of_clubs.png";
+sixCards[1].src = "images/ace_of_clubs.png";
+sixCards[2].src ="images/ace_of_clubs.png";
+sixCards[3].src = "images/ace_of_clubs.png";
+sixCards[4].src = "images/ace_of_clubs.png";
+sixCards[5].src = "images/ace_of_clubs.png";
             }
      if (currentHeart>6){
         backOfCard.hidden= true
          if (betOn=="h"){
             dollars+= wager*2
             money.textContent= "$ " + dollars
-           
-         
-        }
+           }
         winner.hidden = false
        winner.innerHTML= ("Hearts Wins!")
-    
-       hcard2.innerHTML=  ("Hearts ")
-       hcard3.innerHTML=  (" Wins!")
-        
-    
+       step3.hidden=true
+       step4.hidden= false
+       sixCards[0].src = "images/ace_of_hearts.png";
+sixCards[1].src = "images/ace_of_hearts.png";
+sixCards[2].src ="images/ace_of_hearts.png";
+sixCards[3].src = "images/ace_of_hearts.png";
+sixCards[4].src = "images/ace_of_hearts.png";
+sixCards[5].src = "images/ace_of_hearts.png";
     }
-
-    
-    
-    
-    
-// },  500);     
+   
            
-});
+
         
       
       
    
 //odds
-    setTimeout(()=>{
-
+    setTimeout(()=>{    
+console.log ("loop")
     
     for (let i = 0; i < cutCards.length; i++) {
-       
+       console.log ("loop")
         
         if( cutCards[i][1] =='h'){
             totalH += 1
-            // heartsProb= parseInt((totalH/6)*10)
-            // heartOdd= parseInt(heartsProb-1)
-            heartOdd = (13 - totalH) / 46;
+
+            if (totalH == 1 || totalH == 2) {
+                chanceH = "Worth a Shot!";
+              } else if (totalH >= 3) {
+                chanceH = "Outlook Not So Good";
+              
+            } 
+        } else {
+            chanceH = "Great! Bet High";
             
         }
         
         if( cutCards[i][1] =='s'){
-            totalS = totalS +1
-            // spadeProb= parseInt((totalS/6)*10)
-            // spadeOdd= parseInt(spadeProb-1)
-            spadeOdd = (13 - totalS) / 46;
+            totalS  += 1
+            if (totalS == 1 || totalS == 2) {
+                chanceS = "Worth a Shot!";
+              } else if (totalS >= 3) {
+                chanceS = "Outlook Not So Good";
+              }
+           
+            
+        } else {
+            chanceS = "Great! Bet High";
+          
+
 
         }
         
-        if( cutCards[i][1] =='d'){
-            totalD += 1
-            // diamondProb= parseInt(totalD/6)
-            // diamondOdd= parseInt(diamondProb-1)
-            diamondOdd = (13 - totalD) / 46;
-        }
+        if (cutCards[i][1] == 'd') {
+            totalD += 1;
+            if (totalD == 1 || totalD == 2) {
+                chanceD = "Worth a Shot!";
+              } else if (totalD >= 3) {
+                chanceD = "Outlook Not So Good";
+              }
+           
+          } else {
+            chanceD = "Great! Bet High";
+          }
         
-        if( cutCards[i][1] =='c'){
-            totalC += 1
-            // clubProb= parseInt(totalC/6)
-            // clubOdd= parseInt(clubProb-1)
-            clubOdd = (13 - totalC) / 46;
-        }
-        
+        if (cutCards[i][1] == 'c') {
+            totalC += 1;
+         if (totalC == 1 || totalC == 2) {
+                chanceC = "Worth a Shot!";
+              } else if (totalC >= 3) {
+                chanceC = "Outlook Not So Good";
+              }
+            
+          } else {
+            chanceC = "Great! Bet High";
+          }
+          
+          
+
     }
-clubOdds.innerHTML = "Club Odds: " + (clubOdd * 100).toFixed(2) + "%";
-spadeOdds.innerHTML = "Spade Odds: " + (spadeOdd * 100).toFixed(2) + "%";
-diamondOdds.innerHTML = "Diamond Odds: " + (diamondOdd * 100).toFixed(2) + "%";
-heartOdds.innerHTML =  "Heart Odds: " + (heartOdd * 100).toFixed(2) + "%";
-       
-        
-   },1500)
+    console.log(totalH)
+    console.log(totalS)
+    console.log(totalC)
+    console.log(totalD)  
+clubOdds.innerHTML = "Club Odds: " + chanceC ;
+spadeOdds.innerHTML = "Spade Odds: " + chanceS;
+diamondOdds.innerHTML = "Diamond Odds: " + chanceD;
+heartOdds.innerHTML =  "Heart Odds: " + chanceH;
+              
+          
+    },1500)
+});
 
 //event listeners for bets
  heartbet.addEventListener("keyup", function(e){
     if (e.key==="Enter"){
-        console.log(dollars)
+        step2.hidden=true
+       step3.hidden= false
         if (heartbet.value> dollars){
             alert("sorry, you don't have enough money")
             heartbet.value=""
@@ -420,7 +540,8 @@ heartOdds.innerHTML =  "Heart Odds: " + (heartOdd * 100).toFixed(2) + "%";
 })
 clubbet.addEventListener("keyup", function(e){
     if (e.key==="Enter"){
-        console.log(dollars)
+        step2.hidden=true
+       step3.hidden= false
         if (clubbet.value> dollars){
             alert("sorry, you don't have enough money")
             clubbet.value=""
@@ -435,7 +556,8 @@ clubbet.addEventListener("keyup", function(e){
 })
 spadebet.addEventListener("keyup", function(e){
     if (e.key==="Enter"){
-        console.log(dollars)
+        step2.hidden=true
+       step3.hidden= false
         if (spadebet.value> dollars){
             alert("sorry, you don't have enough money")
             spadebet.value=""
@@ -450,7 +572,8 @@ spadebet.addEventListener("keyup", function(e){
 })
 diamondbet.addEventListener("keyup", function(e){
     if (e.key==="Enter"){
-        console.log(dollars)
+        step2.hidden= true
+        step3.hidden= false
         if (diamondbet.value> dollars){
             alert("sorry, you don't have enough money")
             diamondbet.value=""
@@ -463,7 +586,6 @@ diamondbet.addEventListener("keyup", function(e){
         }
     }
 })
-
 
 
 
