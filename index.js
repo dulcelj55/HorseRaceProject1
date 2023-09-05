@@ -128,6 +128,7 @@ let chanceC= ""
 //RESET PLAYER
 resetPlayer.addEventListener('click',function(e){
 money.textContent= "$ " + 500;
+let dollars = 500
 spadebet.disabled = false
 heartbet.disabled = false
 clubbet.disabled = false
